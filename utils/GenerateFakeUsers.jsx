@@ -5,6 +5,7 @@ const generateFakeUser = () => {
         id: faker.string.uuid() ,
         username: faker.person.fullName(),
         avatar: faker.image.avatarLegacy(),
+        company:faker.company.name()
     }
 }
 

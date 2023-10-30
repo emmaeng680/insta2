@@ -3,11 +3,15 @@ import React from 'react'
 import { AiOutlineSearch, AiOutlinePlusCircle, AiOutlineHeart,AiFillHome, AiOutlineMenu} from 'react-icons/ai'
 import { HiOutlineUserGroup } from 'react-icons/hi2'
 import { HiOutlinePaperAirplane } from 'react-icons/hi'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 
 
 
 export default function Header() {
+
+  const { data: session } = useSession()
+
   return (
     <div className='shadow-sm border-b bg-white sticky top-0 z-50'>
       <div className='flex justify-between max-w-6xl mx-5 xl:mx-auto'>
@@ -34,7 +38,9 @@ export default function Header() {
           <AiFillHome className='navBtn' />
           <AiOutlineMenu className='h-6 md:hidden cursor-pointer' />
 
-          <div className='relative navBtn'>
+          {session ? (
+            <>
+            <div className='relative navBtn'>
             <HiOutlinePaperAirplane className='navBtn rotate-45' />
             <div className='absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-white'>3</div>
           </div>
@@ -42,7 +48,13 @@ export default function Header() {
           <HiOutlineUserGroup className='navBtn' />
           <AiOutlineHeart className='navBtn' />
           
-          <img src="https://business.columbia.edu/sites/default/files-efs/styles/default_content_image_mobile/public/person/photos/image.jpg?h=826c2742&itok=wHyUYUyZ" alt="proile pic" className='h-10 rounded-full cursor-pointer'/>
+          <img onClick={signOut} src={session.user.image} alt="proile pic" className='h-10 w-10 rounded-full cursor-pointer'/>
+            </>
+          ) : (
+              <button onClick={signIn}>Sign In</button>
+          )}
+
+          
         </div>
       </div>
 

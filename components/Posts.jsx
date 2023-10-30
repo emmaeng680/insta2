@@ -11,7 +11,7 @@ const posts = [
         caption: "Nature Rocks"
     },
      {
-        id: "123",
+        id: "124",
         username: "nature_nurture",
         userImg: "https://thumbs.dreamstime.com/b/beautiful-young-woman-elegant-dress-beach-sunset-walking-123422055.jpg",
         img: "https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg?w=2210&quality=70",
